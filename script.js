@@ -1,13 +1,13 @@
 async function fetchSkills() {
-  let data = await fetch("skills.json");
+  let response = await fetch("skills.json");
 
-  if (!data.ok) {
-    const message = `An error has occured: ${data.status}`;
+  if (!response.ok) {
+    const message = `An error has occured: ${response.status}`;
     throw new Error(message);
   }
-  let skills = await data.json();
+  let data = await response.json();
 
-  const sortedSkills = skills.sort((a, b) => b.level - a.level); // ChatGPT
+  const sortedSkills = data.sort((a, b) => b.level - a.level); // ChatGPT
 
   console.log(sortedSkills);
 }
